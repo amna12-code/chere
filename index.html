@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chérie ♥</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    background: #f5eee4;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family: Georgia, serif;
+
+    color: #56232b;
+
+    padding: 25px 15px;
+
+}
+
+.card {
+
+    width: 100%;
+
+    max-width: 430px;
+
+    background: #fffaf3;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    border: 1px solid #dfc9b6;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.label {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #a16b63;
+
+}
+
+h1 {
+
+    font-size: clamp(40px, 12vw, 58px);
+
+    font-weight: normal;
+
+    margin: 25px 0 5px;
+
+    letter-spacing: -2px;
+
+}
+
+.subtitle {
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    color: #a16b63;
+
+}
+
+.flower {
+
+    font-size: 76px;
+
+    margin: 22px 0;
+
+    display: inline-block;
+
+    animation: sway 3s ease-in-out infinite;
+
+}
+
+@keyframes sway {
+
+    0%,100% { transform: rotate(-7deg); }
+
+    50% { transform: rotate(7deg); }
+
+}
+
+.divider {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: #c68d82;
+
+    margin: 20px auto;
+
+}
+
+.envelope {
+
+    width: 220px;
+
+    height: 145px;
+
+    background: #9d3544;
+
+    margin: 35px auto 25px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border-radius: 3px;
+
+    box-shadow: 0 12px 25px #692b3030;
+
+    perspective: 700px;
+
+}
+
+.envelope::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: #b64d5b;
+
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+
+    transform-origin: top;
+
+    transition: transform .7s;
+
+    z-index: 4;
+
+}
+
+.envelope.open::before {
+
+    transform: rotateX(180deg);
+
+    z-index: 0;
+
+}
+
+.envelope::after {
+
+    content: "♥";
+
+    position: absolute;
+
+    color: #f8dfce;
+
+    font-size: 25px;
+
+    top: 58%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 5;
+
+}
+
+.paper {
+
+    position: absolute;
+
+    background: #fffaf3;
+
+    width: 85%;
+
+    height: 115px;
+
+    left: 7.5%;
+
+    top: 10px;
+
+    transition: transform .8s;
+
+    padding: 15px 5px;
+
+    color: #702d39;
+
+    font-size: 14px;
+
+    z-index: 2;
+
+}
+
+.envelope.open .paper {
+
+    transform: translateY(-105px);
+
+}
+
+button {
+
+    background: #782e3a;
+
+    color: #fffaf3;
+
+    border: none;
+
+    padding: 15px 30px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    min-height: 48px;
+
+    transition: .3s;
+
+}
+
+button:hover {
+
+    background: #a84755;
+
+}
+
+.message {
+
+    display: none;
+
+    margin-top: 25px;
+
+    padding: 20px 12px;
+
+    border-top: 1px solid #dfc9b6;
+
+    animation: reveal .8s ease;
+
+}
+
+.message h2 {
+
+    font-weight: normal;
+
+    font-size: 28px;
+
+}
+
+.message p {
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #76545a;
+
+}
+
+.signature {
+
+    font-style: italic;
+
+    color: #a84755;
+
+    margin-top: 20px;
+
+}
+
+.bottom {
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #ad8c7d;
+
+    margin-top: 35px;
+
+}
+
+@keyframes reveal {
+
+    from { opacity: 0; transform: translateY(15px); }
+
+    to { opacity: 1; transform: translateY(0); }
+
+}
+
+@media(max-width:350px) {
+
+    .card { padding: 28px 15px; }
+
+    .envelope { width: 190px; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main class="card">
+
+    <div class="label">A PRIVATE LITTLE LETTER</div>
+
+    <h1>Chérie.</h1>
+
+    <div class="subtitle">A little love, wrapped in a letter.</div>
+
+    <div class="flower">🌹</div>
+
+    <div class="divider"></div>
+
+    <p style="font-size:13px; color:#956c64;">
+
+        Something special is waiting for you.
+
+    </p>
+
+    <div class="envelope" id="envelope">
+
+        <div class="paper">A letter, just for you ♥</div>
+
+    </div>
+
+    <button id="openBtn">OPEN MY LETTER</button>
+
+    <section class="message" id="message">
+
+        <h2>My Favorite Person.</h2>
+
+        <p>
+
+            You make ordinary moments<br>
+
+            feel a little more beautiful.<br>
+
+            And that's my favorite thing about you.
+
+        </p>
+
+        <div class="signature">With love, always ♥</div>
+
+    </section>
+
+    <div class="bottom">MADE WITH LOVE · 2026</div>
+
+</main>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+
+const button = document.getElementById("openBtn");
+
+const message = document.getElementById("message");
+
+let opened = false;
+
+button.addEventListener("click", () => {
+
+    opened = !opened;
+
+    envelope.classList.toggle("open", opened);
+
+    message.style.display = opened ? "block" : "none";
+
+    button.textContent = opened
+
+        ? "CLOSE THE LETTER"
+
+        : "OPEN MY LETTER";
+
+    if (opened) {
+
+        setTimeout(() => {
+
+            message.scrollIntoView({
+
+                behavior: "smooth",
+
+                block: "nearest"
+
+            });
+
+        }, 300);
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
